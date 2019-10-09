@@ -1,0 +1,20 @@
+version: "3"
+services:
+  gfg-microservice:
+    container_name: gfg-microservice
+    build: .
+    working_dir: /
+    volumes:
+      - ~/.m2:/root/.m2
+    ports:
+      - "8081:8081"
+    environment:
+      - "SPRING_PROFILES_ACTIVE=stagingData"
+    depends_on:
+      - mongo
+  mongo:
+    image: mongo:3.6
+    ports:
+      - "27017:27017"
+    volumes:
+      - ~/data:/data/db
