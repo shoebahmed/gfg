@@ -1,6 +1,6 @@
 # Global Fashion Group - Assignment
 
-This assignment is prepared for Global Fashion Group. Fashion is close to everyone's heart :), so I have tried my level best code doesn't look ugly. Clothes what we wear gives us confidence and positive energy. I really like this statement, GFG is a fashion company with heart and appreciate. Also, it was nice you have shared the expectation very clearly for this assignment. I have used Eclipse on Mac to build this micro service and docker to run this application. All details are provided in this document.
+This assignment is prepared for Global Fashion Group. Fashion is close to everyone's heart :smirk:, so I have tried my level best code doesn't look ugly. Clothes what we wear gives us confidence and positive energy. I really like this statement, GFG is a fashion company with heart and appreciate. Also, it was nice you have shared the expectation very clearly for this assignment. I have used Eclipse on Mac to build this micro service and docker to run this application. All details are provided in this document.
 
 ### Contents
   Design Consideration
@@ -13,7 +13,7 @@ This assignment is prepared for Global Fashion Group. Fashion is close to everyo
   I have used Spring Boot Microservice's to build CRUD API for Products. API also supports batch creation and fetch. Mongo Database is used to store persistent data, and docker is used for local development and also for deployment. Swagger is incorporated to quickly verify this application. I have not used Spring Boot reactive, but code can be easily upgraded to support Spring Boot reactive with use of Mongo Database. I could have used Caching to make this solution better. All API are versioned. Google Code style plugin for Eclipse is used to format code before delivery.
 
   ##### JWT Authentication
-    Lets start with Security first :) JWT is used to secure this application, at this moment I have 
+    Lets start with Security first :neutral_face: JWT is used to secure this application, at this moment I have 
     harcoded user who can access GFG μS.
   	   User Name : gfgadmin
   	   Password  : password
@@ -62,46 +62,35 @@ This assignment is prepared for Global Fashion Group. Fashion is close to everyo
   Once code is cloned on your local system, open terminal(command) window and go to gfg-assignment
   folder and start local mongo db which will run on docker.
   
-    ```
     docker run --name=mongo-local -p 27017:27017 -d -v ~/data:/data/db mongo:3.6
-    ```
   
   Build project with Maven, this command will also run integration test which need mongo database.
     
-    ```
     mvn clean install
-    ```
   
   Once the product build result in success, you will have to stop local mongo image.
   
-    ```
     docker stop mongo-local
-    ```
   
   After this run μS with docker compose command.
   
-    ```
     docker-compose up -d
-    ```
   
   μS runs on port 8081 and accessible from this URL. In case you are unable to access with IP you can 
   try with localhost. μS will load staging data for three products, to test API's. Please follow below 
   steps docuemented to use this API.
   
-    ```
     http://127.0.0.1:8081/swagger-ui.html
-    ```
+   
  Finally to shutdown this μS you can run following command.	
 	
-    ```
     docker-compose down
-    ```
-
+    
 Step 1 : On Swagger Page, you can click on Login API and choose either version to Login. 
 
 ![](img/step-1.png)
 
-Step 2 : Click on Try Out buton, to login and get a bearer token.
+Step 2 : Click on Try it Out button, to login and get a bearer token.
 
 ![](img/step-2.png)
 
