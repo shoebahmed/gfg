@@ -1,7 +1,6 @@
 package com.gfg.controller;
 
 import java.util.List;
-
 import org.bson.types.ObjectId;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -13,11 +12,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-
 import com.gfg.model.dto.ProductDTOV1;
-
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
 
 @RestController
 @RequestMapping(value = {"/api/product", "/api/v1/product"})
@@ -28,9 +26,13 @@ public interface ProductController {
   @ApiOperation(value = "Get all products, support for search and pagination.",
       response = ProductDTOV1.class)
   public ResponseEntity<List<ProductDTOV1>> getAllProduct(
+      @ApiParam(name = "searchString", value = "Search string", defaultValue = "")
       @RequestParam(defaultValue = "") String searchString,
+      @ApiParam(name = "pageNo", value = "Page number", defaultValue = "0")
       @RequestParam(defaultValue = "0") Integer pageNo,
+      @ApiParam(name = "pageSize", value = "Page size", defaultValue = "50")
       @RequestParam(defaultValue = "50") Integer pageSize,
+      @ApiParam(name = "sortBy", value = "Sort by", defaultValue = "price.asc")
       @RequestParam(defaultValue = "price.asc") String sortBy);
 
   @GetMapping("/{id}")

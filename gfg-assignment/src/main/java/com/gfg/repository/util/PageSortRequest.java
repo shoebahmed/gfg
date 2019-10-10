@@ -22,7 +22,7 @@ public class PageSortRequest implements Serializable {
     } else if (sortBy.toUpperCase().endsWith(Direction.ASC.toString())) {
       return sortBy.substring(0, sortBy.length() - 4);
     }
-    return Constant.BLANK;
+    return Constant.PRICE;
   }
 
   private static Direction getDirection(String sortBy) {

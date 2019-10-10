@@ -4,10 +4,8 @@ import org.springframework.beans.factory.InitializingBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
-
 import com.gfg.model.domain.Product;
 import com.gfg.repository.ProductRepository;
-
 import lombok.RequiredArgsConstructor;
 
 @Configuration
@@ -20,7 +18,7 @@ public class InitializeTestData {
   @Profile("stagingData")
   InitializingBean setStagingData() {
     return () -> {
-      
+
       productRepository.deleteAll();
 
       Product productOne = new Product();

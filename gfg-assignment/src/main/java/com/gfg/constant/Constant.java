@@ -2,5 +2,5 @@ package com.gfg.constant;
 
 public class Constant {
 
-  public static final String BLANK = "";
+  public static final String PRICE = "price";
 }
