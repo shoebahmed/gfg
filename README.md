@@ -19,19 +19,28 @@ This assignment is prepared for Global Fashion Group. Fashion is close to everyo
   For this assignment I have assumed only admin or user of Seller Center can can access these API's. If these API needs to be exposed to Web users (Where they only need access to Read API) than we can extend this solution to support role based permission by @PreAuthorize annotation. In the next section I will show you how can verify this API.
   
   ###### Pagination
-    PagingAndSortingRepository is used to support pagination. I have used Repository to return Page<?>. Pagination is supported for all request. I have used headers to send back the information to client, to make this solution simple. There is also an option to send this information in DTO. 
+    PagingAndSortingRepository is used to support pagination. I have used Repository to return Page<?>. 
+    Pagination is supported for all request. I have used headers to send back the information to client, 
+    to make this solution simple. There is also an option to send this information in DTO. 
     
       * page-number: 0 				Denotes the page number (zero based index)
       * total-pages: 1 				Total pages for this request
 
   ###### Sorting
-  	As per requirement price, brand and color are suitable. You will have to specify a price. asks if you want to sort by price ascending order. If you need to descend order it will be price.desc. Default field is the price and default sorting order in ascending.
+    As per requirement price, brand and color are suitable. You will have to specify a price.asc if 
+    you want to sort by price ascending order. If you need to descend order it will be price.desc , 
+    Default field is the price and default sorting order in ascending.
 
   ###### Unit and Integration Testing
-    MockMvc is used for Unit and Integration Testing. JUnit version 5 is used to test GFG μS. Unit testing covers basic API testing with JSON. Integration testing is used to verify basic and additional requirements of this assignment.
+    MockMvc is used for Unit and Integration Testing. JUnit version 5 is used to test GFG μS. Unit 
+    testing covers basic API  testing with JSON. Integration testing is used to verify basic and 
+    additional requirements of this assignment.
 
 ### Assumption
-  I have assumed to use basic Spring Boot to build this assignment. Due to time consideration, I was unable to write comments in Java file, but named variable and function to conveys its purpose. To use this application I have hardcoded user name and password. JWT works fine and restrict any unauthorized access. GFG μS runs on port 8081
+    I have assumed to use basic Spring Boot to build this assignment. Due to time consideration, I was 
+    unable to write comments in Java file, but named variable and function to conveys its purpose. To 
+    use this application I have hardcoded user name and password. JWT works fine and restrict any 
+    unauthorized access. GFG μS runs on port 8081
 
 ### Ecosystem and Library
   Java 8
@@ -44,6 +53,7 @@ This assignment is prepared for Global Fashion Group. Fashion is close to everyo
   Lombok to reduce boiler code for getter, setter and constructor.
 
 ### How to build and run GFG μS 
+
 
 	docker run --name=mongo-local -p 27017:27017 -d -v ~/data:/data/db mongo:3.6
 	mvn clean install
