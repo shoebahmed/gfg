@@ -6,7 +6,7 @@ This assignment is prepared for Global Fashion Group. Fashion is close to everyo
   1. [Design Consideration](#design-consideration)
   2. [Assumption](#assumption)
   3. [Ecosystem and Library](#ecosystem-and-library) 
-  4. [How to build and run GFG μS](#how-to-build-and-run)
+  4. [How to build and run GFG μS](#ecosystem-and-library)
  
 
 ### [Design Consideration](#design-consideration)
@@ -57,7 +57,7 @@ This assignment is prepared for Global Fashion Group. Fashion is close to everyo
   Modelmapper to convert DTO to Domain and vice versa.
   Lombok to reduce boiler code for getter, setter and constructor.
 
-### [How to build and run GFG μS](#how-to-build-and-run)
+### [How to build and run GFG μS](#ecosystem-and-library)
   
   Once code is cloned on your local system, open terminal(command) window and go to gfg-assignment
   folder and start local mongo db which will run on docker.
