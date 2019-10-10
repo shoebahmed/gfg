@@ -5,8 +5,8 @@ This assignment is prepared for Global Fashion Group. Fashion is close to everyo
 ### Contents
   1. [Design Consideration](#design-consideration)
   2. [Assumption](#assumption)
-  3. [Ecosystem and Library](#ecosystem) 
-  4. [How to build and run GFG μS](#build)
+  3. [Ecosystem and Library](#ecosystem-and-library) 
+  4. [How to build and run GFG μS](#build-and-run)
  
 
 ### [Design Consideration](#design-consideration)
@@ -47,7 +47,7 @@ This assignment is prepared for Global Fashion Group. Fashion is close to everyo
     use this application I have hardcoded user name and password. JWT works fine and restrict any 
     unauthorized access. GFG μS runs on port 8081
 
-### [Ecosystem and Library](#ecosystem)
+### [Ecosystem and Library](#ecosystem-and-library)
   Java 8
   Mongo DB
   Eclipse IDE on Mac.
@@ -57,7 +57,7 @@ This assignment is prepared for Global Fashion Group. Fashion is close to everyo
   Modelmapper to convert DTO to Domain and vice versa.
   Lombok to reduce boiler code for getter, setter and constructor.
 
-### [How to build and run GFG μS](#build) 
+### [How to build and run GFG μS](#build-and-run) 
   
   Once code is cloned on your local system, open terminal(command) window and go to gfg-assignment
   folder and start local mongo db which will run on docker.
