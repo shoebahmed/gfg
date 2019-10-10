@@ -117,7 +117,7 @@ Step 7 : Click on Product API
 Step 8 : Click on API to get Product, enter values, and click on Execute.
    * Page Number : 0
    * Page Size   : 50
-   * Search String : <<blank>>
+   * Search String : Let it be blank
    * Sort By : price.asc
 
 ![](img/step-8.png)
@@ -126,4 +126,4 @@ Step 9 : You can verify response.
 
 ![](img/step-9.png)
 
-You can now repeat from from step 6 to step 9 to verify any of the other API's.
+You can now repeat from from Step 6 to Step 9 to verify any of the other API's.
