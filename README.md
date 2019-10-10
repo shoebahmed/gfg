@@ -12,26 +12,30 @@ This assignment is prepared for Global Fashion Group. Fashion is close to everyo
 ### Design Cosideration
   I have used Spring Boot Microservice's to build CRUD API for Products. API also supports batch creation and fetch. Mongo Database is used to store persistent data, and docker is used for local development and also for deployment. Swagger is incorporated to quickly verify this application. I have not used Spring Boot reactive, but code can be easily upgraded to support Spring Boot reactive with use of Mongo Database. I could have used Caching to make this solution better. All API are versioned. Google Code style plugin for Eclipse is used to format code before delivery.
 
-  ###### JWT Authentication
-  Lets start with Security first :) JWT is used to secure this application, at this moment I have harcoded user who can access this applicaiton
+  ##### JWT Authentication
+    Lets start with Security first :) JWT is used to secure this application, at this moment I have 
+    harcoded user who can access GFG μS.
   	   User Name : gfgadmin
   	   Password  : password
-  For this assignment I have assumed only admin or user of Seller Center can can access these API's. If these API needs to be exposed to Web users (Where they only need access to Read API) than we can extend this solution to support role based permission by @PreAuthorize annotation. In the next section I will show you how can verify this API.
+    For this assignment I have assumed only admin or user of Seller Center can can access these API's.
+    If these API needs to be exposed to Web users (Where they only need access to Read API) than we can
+    extend this solution to support role based permission by @PreAuthorize annotation. In the next
+    section I will show you how can verify this API.
   
-  ###### Pagination
-    PagingAndSortingRepository is used to support pagination. I have used Repository to return Page<?>. 
-    Pagination is supported for all request. I have used headers to send back the information to client, 
+  ##### Pagination
+    PagingAndSortingRepository is used to support pagination. I have used Repository to return Page<?>.
+    Pagination is supported for all request. I have used headers to send back the information to client,
     to make this solution simple. There is also an option to send this information in DTO. 
     
       * page-number: 0 				Denotes the page number (zero based index)
       * total-pages: 1 				Total pages for this request
 
-  ###### Sorting
+  ##### Sorting
     As per requirement price, brand and color are suitable. You will have to specify a price.asc if 
     you want to sort by price ascending order. If you need to descend order it will be price.desc , 
     Default field is the price and default sorting order in ascending.
 
-  ###### Unit and Integration Testing
+  ##### Unit and Integration Testing
     MockMvc is used for Unit and Integration Testing. JUnit version 5 is used to test GFG μS. Unit 
     testing covers basic API  testing with JSON. Integration testing is used to verify basic and 
     additional requirements of this assignment.
