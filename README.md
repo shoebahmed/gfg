@@ -3,10 +3,10 @@
 This assignment is prepared for Global Fashion Group. Fashion is close to everyone's heart :smirk:, so I have tried my level best code doesn't look ugly. Clothes what we wear gives us confidence and positive energy. I really like this statement, GFG is a fashion company with heart and appreciate. Also, it was nice you have shared the expectation very clearly for this assignment. I have used Eclipse on Mac to build this micro service and docker to run this application. All details are provided in this document.
 
 ### Contents
-  Design Consideration
-  Assumption
-  Ecosystem and Library
-  How to run this Microservice
+  1. [Design Consideration]
+  2. [Assumption]
+  3. [Ecosystem and Library]
+  4. [How to build and run GFG μS]
  
 
 ### Design Cosideration
