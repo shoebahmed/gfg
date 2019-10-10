@@ -90,6 +90,7 @@ public class ProductControllerImpl implements ProductController {
 
   @Override
   public ResponseEntity<Object> deleteProduct(ObjectId id) {
+    
     return productRepository.findById(id).map(product -> {
       productRepository.delete(product);
       return new ResponseEntity<>(HttpStatus.NO_CONTENT);
