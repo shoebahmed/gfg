@@ -13,8 +13,8 @@ This assignment is prepared for Global Fashion Group. Fashion is close to everyo
   I have used Spring Boot Microservice's to build CRUD API for Products. API also supports batch creation and fetch. Mongo Database is used to store persistent data, and docker is used for local development and also for deployment. Swagger is incorporated to quickly verify this application. I have not used Spring Boot reactive, but code can be easily upgraded to support Spring Boot reactive with use of Mongo Database. I could have used Caching to make this solution better. All API are versioned. Google Code style plugin for Eclipse is used to format code before delivery.
 
   ##### JWT Authentication
-    Lets start with Security first :neutral_face: JWT is used to secure this application, at this moment I have 
-    harcoded user who can access GFG μS.
+    Lets start with Security first :neutral_face: JWT is used to secure this application, at this
+    moment I have harcoded user who can access GFG μS.
   	   User Name : gfgadmin
   	   Password  : password
     For this assignment I have assumed only admin or user of Seller Center can can access these API's.
