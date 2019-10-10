@@ -58,23 +58,83 @@ This assignment is prepared for Global Fashion Group. Fashion is close to everyo
   Lombok to reduce boiler code for getter, setter and constructor.
 
 ### How to build and run GFG μS 
+  
+  Once code is cloned on your local system, open terminal(command) window and go to gfg-assignment
+  folder and start local mongo db which will run on docker.
+  
+    ```
+    docker run --name=mongo-local -p 27017:27017 -d -v ~/data:/data/db mongo:3.6
+    ```
+  
+  Build project with Maven, this command will also run integration test which need mongo database.
+    
+    ```
+    mvn clean install
+    ```
+  
+  Once the product build result in success, you will have to stop local mongo image.
+  
+    ```
+    docker stop mongo-local
+    ```
+  
+  After this run μS with docker compose command.
+  
+    ```
+    docker-compose up -d
+    ```
+  
+  μS runs on port 8081 and accessible from this URL. In case you are unable to access with IP you can 
+  try with localhost. μS will load staging data for three products, to test API's. Please follow below 
+  steps docuemented to use this API.
+  
+    ```
+    http://127.0.0.1:8081/swagger-ui.html
+    ```
+ Finally to shutdown this μS you can run following command.	
+	
+    ```
+    docker-compose down
+    ```
 
-
-	docker run --name=mongo-local -p 27017:27017 -d -v ~/data:/data/db mongo:3.6
-	mvn clean install
-	docker stop mongo-local
-	docker-compose up -d
-	http://127.0.0.1:8081/swagger-ui.html
-	docker-compose down
-
-	Images
+Step 1 : On Swagger Page, you can click on Login API and choose either version to Login. 
 
 ![](img/step-1.png)
+
+Step 2 : Click on Try Out buton, to login and get a bearer token.
+
 ![](img/step-2.png)
+
+Step 3 : Enter User name as gfgadmin and Password as password and click on Execute button
+
 ![](img/step-3.png)
+
+Step 4 : From Response header copy the bearer token.
+
 ![](img/step-4.png)
+
+Step 5 : Scroll up a bit and click on "Authorize" button. 
+
 ![](img/step-5.png)
+
+Step 6 : In Popup window enter token as value and hit Authorize. 
+
 ![](img/step-6.png)
+
+Step 7 : Click on Product API
+
 ![](img/step-7.png)
+
+Step 8 : Click on API to get Product, enter values, and click on Execute.
+   Page Number : 0
+   Page Size   : 50
+   Search String : <<blank>>
+   Sort By : price.asc
+
 ![](img/step-8.png)
+
+Step 9 : You can verify response.
+
 ![](img/step-9.png)
+
+You can now repeat from from step 6 to step 9 to verify any of the other API's.
