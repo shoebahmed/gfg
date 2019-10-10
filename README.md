@@ -115,10 +115,10 @@ Step 7 : Click on Product API
 ![](img/step-7.png)
 
 Step 8 : Click on API to get Product, enter values, and click on Execute.
-   Page Number : 0
-   Page Size   : 50
-   Search String : <<blank>>
-   Sort By : price.asc
+   * Page Number : 0
+   * Page Size   : 50
+   * Search String : <<blank>>
+   * Sort By : price.asc
 
 ![](img/step-8.png)
 
