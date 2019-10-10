@@ -70,10 +70,10 @@ public class ProductControllerTest extends BaseTest {
   @Test
   void getAllProduct_ProductList_Ok() throws Exception {
 
-    Page<Product> pagedResponse = new PageImpl<>(Collections.singletonList(productOne));
+    Page<Product> pagedResponse = new PageImpl<>(Collections.singletonList(product));
     Mockito.when(productRepository.findByTitleOrDescription(any(String.class), any(Pageable.class)))
         .thenReturn(pagedResponse);
-    Mockito.when(dtoService.convertProductToProductDTO(productOne)).thenReturn(productDTOV1);
+    Mockito.when(dtoService.convertProductToProductDTO(product)).thenReturn(productDTOV1);
 
     MockHttpServletResponse response =
         mvc.perform(get(APIURL).accept(MediaType.APPLICATION_JSON)).andReturn().getResponse();
@@ -88,9 +88,8 @@ public class ProductControllerTest extends BaseTest {
   @Test
   void getProductById_Product_Ok() throws Exception {
 
-    Mockito.when(productRepository.findById(any(ObjectId.class)))
-        .thenReturn(Optional.of(productOne));
-    Mockito.when(dtoService.convertProductToProductDTO(productOne)).thenReturn(productDTOV1);
+    Mockito.when(productRepository.findById(any(ObjectId.class))).thenReturn(Optional.of(product));
+    Mockito.when(dtoService.convertProductToProductDTO(product)).thenReturn(productDTOV1);
 
     MockHttpServletResponse response =
         mvc.perform(get(APIURL.concat(productDTOV1.getId())).accept(MediaType.APPLICATION_JSON))
@@ -119,8 +118,8 @@ public class ProductControllerTest extends BaseTest {
   void createProduct_Product_Ok() throws Exception {
 
     Mockito.when(dtoService.convertProductDTOToProduct(any(ProductDTOV1.class)))
-        .thenReturn(productOne);
-    Mockito.when(productRepository.save(productOne)).thenReturn(productOne);
+        .thenReturn(product);
+    Mockito.when(productRepository.save(product)).thenReturn(product);
     Mockito.when(dtoService.convertProductToProductDTO(any(Product.class)))
         .thenReturn(productDTOV1);
 
@@ -140,11 +139,10 @@ public class ProductControllerTest extends BaseTest {
 
     productDTOV1.setTitle("New Title");
 
-    Mockito.when(productRepository.findById(any(ObjectId.class)))
-        .thenReturn(Optional.of(productOne));
+    Mockito.when(productRepository.findById(any(ObjectId.class))).thenReturn(Optional.of(product));
     Mockito.when(dtoService.convertProductDTOToProduct(any(ProductDTOV1.class)))
-        .thenReturn(productOne);
-    Mockito.when(productRepository.save(productOne)).thenReturn(productOne);
+        .thenReturn(product);
+    Mockito.when(productRepository.save(product)).thenReturn(product);
     Mockito.when(dtoService.convertProductToProductDTO(any(Product.class)))
         .thenReturn(productDTOV1);
 
@@ -164,8 +162,8 @@ public class ProductControllerTest extends BaseTest {
 
     Mockito.when(productRepository.findById(any(ObjectId.class))).thenReturn(Optional.empty());
     Mockito.when(dtoService.convertProductDTOToProduct(any(ProductDTOV1.class)))
-        .thenReturn(productOne);
-    Mockito.when(productRepository.save(productOne)).thenReturn(productOne);
+        .thenReturn(product);
+    Mockito.when(productRepository.save(product)).thenReturn(product);
     Mockito.when(dtoService.convertProductToProductDTO(any(Product.class)))
         .thenReturn(productDTOV1);
 
@@ -181,8 +179,7 @@ public class ProductControllerTest extends BaseTest {
   @Test
   void deleteProduct_Present_NoContent() throws Exception {
 
-    Mockito.when(productRepository.findById(any(ObjectId.class)))
-        .thenReturn(Optional.of(productOne));
+    Mockito.when(productRepository.findById(any(ObjectId.class))).thenReturn(Optional.of(product));
 
     MockHttpServletResponse response =
         mvc.perform(delete(APIURL.concat(productDTOV1.getId())).accept(MediaType.APPLICATION_JSON))
@@ -207,9 +204,8 @@ public class ProductControllerTest extends BaseTest {
   void createProductBatch_ProductList_Ok() throws Exception {
 
     Mockito.when(dtoService.convertProductDTOToProduct(any(ProductDTOV1.class)))
-        .thenReturn(productOne);
-    Mockito.when(productRepository.saveAll(any()))
-        .thenReturn(Collections.singletonList(productOne));
+        .thenReturn(product);
+    Mockito.when(productRepository.saveAll(any())).thenReturn(Collections.singletonList(product));
     Mockito.when(dtoService.convertProductToProductDTO(any(Product.class)))
         .thenReturn(productDTOV1);
 

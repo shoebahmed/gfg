@@ -19,6 +19,7 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.http.MediaType;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.servlet.MockMvc;
 
@@ -63,11 +64,11 @@ public class ProductControllerIntegrationTest extends BaseTest {
 
     productRepository.deleteAll();
 
-    productOne.setTitle("T-Shirt");
-    productOne.setDescription("New Arrival");
-    productOne.setBrand("lucas");
-    productOne.setPrice(59.89);
-    productOne.setColor("white");
+    product.setTitle("T-Shirt");
+    product.setDescription("New Arrival");
+    product.setBrand("lucas");
+    product.setPrice(59.89);
+    product.setColor("white");
 
     Product productTwo = new Product();
     productTwo.setTitle("Nike Runner");
@@ -83,7 +84,7 @@ public class ProductControllerIntegrationTest extends BaseTest {
     productThree.setPrice(76.89);
     productThree.setColor("white");
 
-    productRepository.save(productOne);
+    productRepository.save(product);
     productRepository.save(productTwo);
     productRepository.save(productThree);
 
@@ -122,7 +123,9 @@ public class ProductControllerIntegrationTest extends BaseTest {
 
     initializeAuthorizedUserHeader(jwtTokenUtility);
 
-    mockMvc.perform(get(APIURL).headers(headerForAuthorizedUser).contentType("application/json"))
+    mockMvc
+        .perform(
+            get(APIURL).headers(headerForAuthorizedUser).contentType(MediaType.APPLICATION_JSON))
         .andExpect(status().isOk()).andExpect(jsonPath("$.*", hasSize(3)));
   }
 
@@ -131,7 +134,9 @@ public class ProductControllerIntegrationTest extends BaseTest {
 
     initializeUnAuthorizedUserHeader(jwtTokenUtility);
 
-    mockMvc.perform(get(APIURL).headers(headerForUnAuthorizedUser).contentType("application/json"))
+    mockMvc
+        .perform(
+            get(APIURL).headers(headerForUnAuthorizedUser).contentType(MediaType.APPLICATION_JSON))
         .andExpect(status().isUnauthorized());
   }
 
@@ -157,7 +162,7 @@ public class ProductControllerIntegrationTest extends BaseTest {
 
     mockMvc
         .perform(get(APIURL).param("pageSize", "20").param("pageNo", "3")
-            .headers(headerForAuthorizedUser).contentType("application/json"))
+            .headers(headerForAuthorizedUser).contentType(MediaType.APPLICATION_JSON))
         .andExpect(status().isOk()).andExpect(jsonPath("$.*", hasSize(10)))
         .andExpect(header().string("total-pages", "4"))
         .andExpect(header().string("page-number", "3"));
@@ -172,7 +177,7 @@ public class ProductControllerIntegrationTest extends BaseTest {
 
     mockMvc
         .perform(get(APIURL).param("pageSize", "20").param("sortBy", "price.asc")
-            .headers(headerForAuthorizedUser).contentType("application/json"))
+            .headers(headerForAuthorizedUser).contentType(MediaType.APPLICATION_JSON))
         .andExpect(status().isOk()).andExpect(jsonPath("$.[0].price", is(56.89)))
         .andExpect(header().string("total-pages", "4"))
         .andExpect(header().string("page-number", "0"));
@@ -187,7 +192,7 @@ public class ProductControllerIntegrationTest extends BaseTest {
 
     mockMvc
         .perform(get(APIURL).param("pageSize", "20").param("searchString", "discounted")
-            .headers(headerForAuthorizedUser).contentType("application/json"))
+            .headers(headerForAuthorizedUser).contentType(MediaType.APPLICATION_JSON))
         .andExpect(status().isOk()).andExpect(jsonPath("$.*", hasSize(1)))
         .andExpect(header().string("total-pages", "1"))
         .andExpect(header().string("page-number", "0"));
@@ -199,8 +204,9 @@ public class ProductControllerIntegrationTest extends BaseTest {
     initializeAuthorizedUserHeader(jwtTokenUtility);
 
     mockMvc
-        .perform(post(APIURL).headers(headerForAuthorizedUser).contentType("application/json")
-            .content(this.objectMapper.writeValueAsString(productDTOV1)))
+        .perform(
+            post(APIURL).headers(headerForAuthorizedUser).contentType(MediaType.APPLICATION_JSON)
+                .content(this.objectMapper.writeValueAsString(productDTOV1)))
         .andExpect(status().isCreated()).andExpect(jsonPath("$.title", is(productDTOV1.getTitle())))
         .andExpect(jsonPath("$.brand", is(productDTOV1.getBrand())));
   }
@@ -211,22 +217,23 @@ public class ProductControllerIntegrationTest extends BaseTest {
     initializeUnAuthorizedUserHeader(jwtTokenUtility);
 
     mockMvc
-        .perform(post(APIURL).headers(headerForUnAuthorizedUser).contentType("application/json")
-            .content(this.objectMapper.writeValueAsString(productDTOV1)))
+        .perform(
+            post(APIURL).headers(headerForUnAuthorizedUser).contentType(MediaType.APPLICATION_JSON)
+                .content(this.objectMapper.writeValueAsString(productDTOV1)))
         .andDo(print()).andExpect(status().isUnauthorized());
   }
 
   @Test
   void updateProduct_Product_Ok() throws Exception {
 
-    ProductDTOV1 productDTO = dtoService.convertProductToProductDTO(productOne);
+    ProductDTOV1 productDTO = dtoService.convertProductToProductDTO(product);
     productDTO.setTitle("New Title");
 
     initializeAuthorizedUserHeader(jwtTokenUtility);
 
     mockMvc
         .perform(put(APIURL.concat(String.valueOf(productDTO.getId())))
-            .headers(headerForAuthorizedUser).contentType("application/json")
+            .headers(headerForAuthorizedUser).contentType(MediaType.APPLICATION_JSON)
             .content(this.objectMapper.writeValueAsString(productDTO)))
         .andExpect(status().isOk()).andExpect(jsonPath("$.id", is(productDTO.getId())))
         .andExpect(jsonPath("$.title", is(productDTO.getTitle())));
@@ -235,14 +242,14 @@ public class ProductControllerIntegrationTest extends BaseTest {
   @Test
   void updateProduct_NotAllowed() throws Exception {
 
-    ProductDTOV1 productDTO = dtoService.convertProductToProductDTO(productOne);
+    ProductDTOV1 productDTO = dtoService.convertProductToProductDTO(product);
     productDTO.setTitle("New Title");
 
     initializeUnAuthorizedUserHeader(jwtTokenUtility);
 
     mockMvc
         .perform(put(APIURL.concat(String.valueOf(productDTO.getId())))
-            .headers(headerForUnAuthorizedUser).contentType("application/json")
+            .headers(headerForUnAuthorizedUser).contentType(MediaType.APPLICATION_JSON)
             .content(this.objectMapper.writeValueAsString(productDTO)))
         .andExpect(status().isUnauthorized());
   }
@@ -253,8 +260,8 @@ public class ProductControllerIntegrationTest extends BaseTest {
     initializeAuthorizedUserHeader(jwtTokenUtility);
 
     mockMvc
-        .perform(delete(APIURL.concat(String.valueOf(productOne.getId())))
-            .headers(headerForAuthorizedUser).contentType("application/json"))
+        .perform(delete(APIURL.concat(String.valueOf(product.getId())))
+            .headers(headerForAuthorizedUser).contentType(MediaType.APPLICATION_JSON))
         .andExpect(status().isNoContent());
   }
 
@@ -264,8 +271,8 @@ public class ProductControllerIntegrationTest extends BaseTest {
     initializeUnAuthorizedUserHeader(jwtTokenUtility);
 
     mockMvc
-        .perform(delete(APIURL.concat(String.valueOf(productOne.getId())))
-            .headers(headerForUnAuthorizedUser).contentType("application/json"))
+        .perform(delete(APIURL.concat(String.valueOf(product.getId())))
+            .headers(headerForUnAuthorizedUser).contentType(MediaType.APPLICATION_JSON))
         .andExpect(status().isUnauthorized());
   }
 
@@ -276,7 +283,7 @@ public class ProductControllerIntegrationTest extends BaseTest {
 
     mockMvc
         .perform(post(APIURL.concat("batch")).headers(headerForAuthorizedUser)
-            .contentType("application/json")
+            .contentType(MediaType.APPLICATION_JSON)
             .content(this.objectMapper.writeValueAsString(Collections.singletonList(productDTOV1))))
         .andExpect(status().isCreated())
         .andExpect(jsonPath("$.[0].title", is(productDTOV1.getTitle())))

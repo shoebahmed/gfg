@@ -14,7 +14,7 @@ public class BaseTest {
 
   protected static final String LOGINAPIURL = "/api/v1/login/";
 
-  protected Product productOne;
+  protected Product product;
 
   protected ProductDTOV1 productDTOV1;
 
@@ -24,24 +24,24 @@ public class BaseTest {
 
   public void initializeProduct() {
 
-    productOne = new Product();
-    productOne.setId(new ObjectId());
-    productOne.setTitle("T-Shirt");
-    productOne.setDescription("New Arrival");
-    productOne.setBrand("lucas");
-    productOne.setPrice(59.89);
-    productOne.setColor("white");
+    product = new Product();
+    product.setId(new ObjectId());
+    product.setTitle("T-Shirt");
+    product.setDescription("New Arrival");
+    product.setBrand("lucas");
+    product.setPrice(59.89);
+    product.setColor("white");
   }
 
   public void initializeProductDTO() {
 
     productDTOV1 = new ProductDTOV1();
-    productDTOV1.setId(productOne.getId().toString());
-    productDTOV1.setTitle(productOne.getTitle());
-    productDTOV1.setDescription(productOne.getDescription());
-    productDTOV1.setBrand(productOne.getBrand());
-    productDTOV1.setPrice(productOne.getPrice());
-    productDTOV1.setColor(productOne.getColor());
+    productDTOV1.setId(product.getId().toString());
+    productDTOV1.setTitle(product.getTitle());
+    productDTOV1.setDescription(product.getDescription());
+    productDTOV1.setBrand(product.getBrand());
+    productDTOV1.setPrice(product.getPrice());
+    productDTOV1.setColor(product.getColor());
   }
 
   public void initializeAuthorizedUserHeader(JwtTokenUtility jwtTokenUtility) {
