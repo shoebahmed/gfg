@@ -54,4 +54,12 @@ How to build and run GFG μS
 
 	Images
 
-![](img/get-response.png)
+![](img/step-1.png)
+![](img/step-2.png)
+![](img/step-3.png)
+![](img/step-4.png)
+![](img/step-5.png)
+![](img/step-6.png)
+![](img/step-7.png)
+![](img/step-8.png)
+![](img/step-9.png)
