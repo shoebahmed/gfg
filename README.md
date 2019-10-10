@@ -3,13 +3,13 @@
 This assignment is prepared for Global Fashion Group. Fashion is close to everyone's heart :smirk:, so I have tried my level best code doesn't look ugly. Clothes what we wear gives us confidence and positive energy. I really like this statement, GFG is a fashion company with heart and appreciate. Also, it was nice you have shared the expectation very clearly for this assignment. I have used Eclipse on Mac to build this micro service and docker to run this application. All details are provided in this document.
 
 ### Contents
-  1. [Design Consideration]
-  2. [Assumption]
-  3. [Ecosystem and Library] 
-  4. [How to build and run GFG μS]
+  1. Design Consideration
+  2. Assumption
+  3. Ecosystem and Library 
+  4. How to build and run GFG μS
  
 
-### [Design Consideration]
+### Design Consideration
   I have used Spring Boot Microservice's to build CRUD API for Products. API also supports batch creation and fetch. Mongo Database is used to store persistent data, and docker is used for local development and also for deployment. Swagger is incorporated to quickly verify this application. I have not used Spring Boot reactive, but code can be easily upgraded to support Spring Boot reactive with use of Mongo Database. I could have used Caching to make this solution better. All API are versioned. Google Code style plugin for Eclipse is used to format code before delivery.
 
   ##### JWT Authentication
@@ -41,13 +41,13 @@ This assignment is prepared for Global Fashion Group. Fashion is close to everyo
     testing covers basic API  testing with JSON. Integration testing is used to verify basic and 
     additional requirements of this assignment.
 
-### [Assumption]
+### Assumption
     I have assumed to use basic Spring Boot to build this assignment. Due to time consideration, I was 
     unable to write comments in Java file, but named variable and function to conveys its purpose. To 
     use this application I have hardcoded user name and password. JWT works fine and restrict any 
     unauthorized access. GFG μS runs on port 8081
 
-### [Ecosystem and Library]
+### Ecosystem and Library
   Java 8
   Mongo DB
   Eclipse IDE on Mac.
@@ -57,7 +57,7 @@ This assignment is prepared for Global Fashion Group. Fashion is close to everyo
   Modelmapper to convert DTO to Domain and vice versa.
   Lombok to reduce boiler code for getter, setter and constructor.
 
-### [How to build and run GFG μS] 
+### How to build and run GFG μS 
   
   Once code is cloned on your local system, open terminal(command) window and go to gfg-assignment
   folder and start local mongo db which will run on docker.
