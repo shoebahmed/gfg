@@ -23,9 +23,10 @@ This assignment is prepared for Global Fashion Group. Fashion is close to everyo
     section I will show you how can verify this API.
   
   ##### Pagination
-    PagingAndSortingRepository is used to support pagination. I have used Repository to return Page<?>.
-    Pagination is supported for all request. I have used headers to send back the information to client,
-    to make this solution simple. There is also an option to send this information in DTO. 
+    PagingAndSortingRepository is used to support pagination. I have used Repository to return
+    Page<?>. Pagination is supported for Get request with query parameter. I have used headers to send 
+    back the information to client to make this solution simple. There is also an option to send this 
+    information in DTO. 
     
       * page-number: 0 				Denotes the page number (zero based index)
       * total-pages: 1 				Total pages for this request
