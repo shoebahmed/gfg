@@ -1,6 +1,6 @@
 # Global Fashion Group - Assignment
 
-This assignment is prepared for Global Fashion Group. Fashion is close to everyone's heart :smirk:, so I have tried my level best code doesn't look ugly. Clothes what we wear gives us confidence and positive energy. I really like this statement, GFG is a fashion company with heart and appreciate. Also, it was nice you have shared the expectation very clearly for this assignment. I have used Eclipse on Mac to build this micro service and docker to run this application. All details are provided in this document.
+This assignment is prepared for Global Fashion Group. Fashion is close to everyone's heart :smirk:, so I have tried my level best code doesn't look ugly. Clothes what we wear gives us confidence and positive energy. I really like this statement, GFG is a fashion company with heart and appreciate. Also, it was nice you have shared the expectation very clearly for this assignment. I have used Eclipse on Mac to build this micro service and docker to run this application. All details is provided in this readme.
 
 ### Contents
   1. [Design Consideration](#design-consideration)
@@ -10,7 +10,7 @@ This assignment is prepared for Global Fashion Group. Fashion is close to everyo
  
 
 ### [Design Consideration](#design-consideration)
-  I have used Spring Boot Microservice's to build CRUD API for Products. API also supports batch creation and fetch. Mongo Database is used to store persistent data, and docker is used for local development and also for deployment. Swagger is incorporated to quickly verify this application. I have not used Spring Boot reactive, but code can be easily upgraded to support Spring Boot reactive with use of Mongo Database. I could have used Caching to make this solution better. All API are versioned. Google Code style plugin for Eclipse is used to format code before delivery.
+  I have used Spring Boot Microservice's to build CRUD API for Products. API also supports batch creation and fetch. Mongo Database is used to store persistent data, and docker is used for local development and also for deployment. Swagger is incorporated to quickly verify this application. I have not used Spring Boot reactive, but code can be easily upgraded to support Spring Boot reactive with use of Mongo Database. I could have used Caching to make this solution better. All API are versioned. Google Code style plugin for Eclipse is used to format code while developing.
 
   ##### JWT Authentication
     Lets start with Security first :neutral_face: JWT is used to secure this application, at this
@@ -25,7 +25,7 @@ This assignment is prepared for Global Fashion Group. Fashion is close to everyo
   ##### Pagination
     PagingAndSortingRepository is used to support pagination. I have used Repository to return
     Page<?>. Pagination is supported for Get request with query parameter. I have used headers to send 
-    back the information to client to make this solution simple. There is also an option to send this 
+    back the information to client to make this solution simple. There can also be an option to send this 
     information in DTO. 
     
       * page-number: 0 				Denotes the page number (zero based index)
