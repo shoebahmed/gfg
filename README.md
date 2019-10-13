@@ -10,7 +10,7 @@ This assignment is prepared for Global Fashion Group. Fashion is close to everyo
  
 
 ### [Design Consideration](#design-consideration)
-  I have used Spring Boot Microservice's to build CRUD API for Products. API also supports batch creation and fetch. Mongo Database is used to store persistent data, and docker is used for local development and also for deployment. Swagger is incorporated to quickly verify this application. I have not used Spring Boot reactive, but code can be easily upgraded to support Spring Boot reactive with use of Mongo Database. I could have used Caching to make this solution better. All API are versioned. Google Code style plugin for Eclipse is used to format code while developing.
+  I have used Spring Boot Microservice's to build CRUD API for Products. API also supports batch creation and fetch. Mongo Database is used to store persistent data, and docker is used for local development and also for deployment. Swagger is incorporated to quickly verify this application. I could have used Caching to make this solution better. All API are versioned. Google Code style plugin for Eclipse is used to format code while developing.
 
   ##### JWT Authentication
     Lets start with Security first :neutral_face: JWT is used to secure this application, at this
@@ -19,14 +19,16 @@ This assignment is prepared for Global Fashion Group. Fashion is close to everyo
   	   Password  : password
     For this assignment I have assumed only admin or user of Seller Center can can access these API's.
     If these API needs to be exposed to Web users (Where they only need access to Read API) than we can
-    extend this solution to support role based permission by @PreAuthorize annotation. In the next
+    extend this solution to support role based permission by @PreAuthorize annotation. CSRF cross token 
+    authorization is disabled. GFG μS runs stateless and no state is stored or chained. In the next
     section I will show you how can verify this API.
   
   ##### Pagination
     PagingAndSortingRepository is used to support pagination. I have used Repository to return
     Page<?>. Pagination is supported for Get request with query parameter. I have used headers to send 
     back the information to client to make this solution simple. There can also be an option to send this 
-    information in DTO. 
+    information in DTO. I have not used existing Pageable as request param, as it was introducing parameter
+    which was making the API look complex
     
       * page-number: 0 				Denotes the page number (zero based index)
       * total-pages: 1 				Total pages for this request
