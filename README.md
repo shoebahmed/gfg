@@ -37,7 +37,11 @@ This assignment is prepared for Global Fashion Group. Fashion is close to everyo
     As per requirement price, brand and color are suitable. You will have to specify a price.asc if 
     you want to sort by price ascending order. If you need to descend order it will be price.desc , 
     Default field is the price and default sorting order in ascending.
-
+  
+  ##### Searching
+    Free text search suppport is provided for title and description. I forgot to mark these columns 
+    as @Indexed . Both these columns support case insensitive search.
+    
   ##### Unit and Integration Testing
     MockMvc is used for Unit and Integration Testing. JUnit version 5 is used to test GFG μS. Unit 
     testing covers basic API  testing with JSON. Integration testing is used to verify basic and 
